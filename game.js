@@ -7,6 +7,14 @@ ctx.canvas.width = GAME_WIDTH;
 ctx.canvas.height = GAME_HEIGHT;
 let screen = Screen.Main;
 
+export function loadImageAsset(src) {
+	return new Promise((resolve) => {
+		const img = new Image();
+		img.src = src;
+		img.onload = () => resolve(img); // Only proceeds when finished
+	});
+}
+
 function update(timestamp) {
 	var elapsed = (timestamp - lastTimestamp) / 1000;
 	lastTimestamp = timestamp;
